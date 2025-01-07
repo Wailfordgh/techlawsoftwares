@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #f0f2f5;
+            padding: 20px;
+            color: #333;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .subject-card {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h2>School Base Assessment</h2>
+    <div class="logo-container" style="text-align: center;">
+        <img id="logo" src="logo.png" alt="School Logo" style="width: 150px;">
+    </div>
+
+    <div class="dashboard">
+        <div class="card" onclick="openClass('KGOne')">KG One</div>
+        <div class="card" onclick="openClass('KGTwo')">KG Two</div>
+        <div class="card" onclick="openClass('BasicOne')">Basic One</div>
+        <div class="card" onclick="openClass('BasicTwo')">Basic Two</div>
+        <div class="card" onclick="openClass('BasicThree')">Basic Three</div>
+        <div class="card" onclick="openClass('BasicFour')">Basic Four</div>
+        <div class="card" onclick="openClass('BasicFive')">Basic Five</div>
+        <div class="card" onclick="openClass('BasicSix')">Basic Six</div>
+    </div>
+
+    <script>
+        function openClass(className) {
+            const subjects = {
+                KGOne: ['Literacy', 'Numeracy', 'Creative Arts'],
+                KGTwo: ['Literacy', 'Numeracy', 'Creative Arts'],
+                BasicOne: ['Mathematics', 'English', 'Science', 'History', 'Creative Arts', 'RME', 'Asante Twi'],
+                BasicTwo: ['Mathematics', 'English', 'Science', 'History', 'Creative Arts', 'RME', 'Asante Twi'],
+                BasicThree: ['Mathematics', 'English', 'Science', 'History', 'Creative Arts', 'RME', 'Asante Twi'],
+                BasicFour: ['Mathematics', 'English', 'Science', 'History', 'Creative Arts', 'RME', 'Asante Twi', 'Computing'],
+                BasicFive: ['Mathematics', 'English', 'Science', 'History', 'Creative Arts', 'RME', 'Asante Twi', 'Computing'],
+                BasicSix: ['Mathematics', 'English', 'Science', 'History', 'Creative Arts', 'RME', 'Asante Twi', 'Computing']
+            };
+
+            let subjectView = '<h2>' + className.replace(/([A-Z])/g, ' $1').trim() + '</h2><div class="subject-card">';
+            subjects[className].forEach(subject => {
+                // Passing each subject to openSubject for dynamic routing
+                subjectView += '<div class="card" onclick="openSubject(\'' + className + '\', \'' + subject + '\')">' + subject + '</div>';
+            });
+            subjectView += '</div>';
+
+            document.body.innerHTML = subjectView;
+        }
+
+        function openSubject(className, subjectName) {
+            const subjectLinks = {
+                'KGOne': {
+                    'Literacy': 'literacyKGOneForm.html',
+                    'Numeracy': 'numeracyKGOneForm.html',
+                    'Creative Arts': 'creativeArtsKGOneForm.html'
+                },
+                'KGTwo': {
+                    'Literacy': 'literacyKGTwoForm.html',
+                    'Numeracy': 'numeracyKGTwoForm.html',
+                    'Creative Arts': 'creativeArtsKGTwoForm.html'
+                },
+                'BasicOne': {
+                    'Mathematics': 'mathForm.html',
+                    'English': 'englishForm.html',
+                    'Science': 'scienceForm.html',
+                    'History': 'historyForm.html',
+                    'Creative Arts': 'creativeArtsForm.html',
+                    'RME': 'rmeForm.html',
+                    'Asante Twi': 'asanteTwiForm.html'
+                },
+                'BasicTwo': {
+                    'Mathematics': 'mathForm.html',
+                    'English': 'englishForm.html',
+                    'Science': 'scienceForm.html',
+                    'History': 'historyForm.html',
+                    'Creative Arts': 'creativeArtsForm.html',
+                    'RME': 'rmeForm.html',
+                    'Asante Twi': 'asanteTwiForm.html'
+                },
+                'BasicThree': {
+                    'Mathematics': 'mathForm.html',
+                    'English': 'englishForm.html',
+                    'Science': 'scienceForm.html',
+                    'History': 'historyForm.html',
+                    'Creative Arts': 'creativeArtsForm.html',
+                    'RME': 'rmeForm.html',
+                    'Asante Twi': 'asanteTwiForm.html'
+                },
+                'BasicFour': {
+                    'Mathematics': 'mathForm.html',
+                    'English': 'englishForm.html',
+                    'Science': 'scienceForm.html',
+                    'History': 'historyForm.html',
+                    'Creative Arts': 'creativeArtsForm.html',
+                    'RME': 'rmeForm.html',
+                    'Asante Twi': 'asanteTwiForm.html',
+                    'Computing': 'computingForm.html'
+                },
+                'BasicFive': {
+                    'Mathematics': 'mathForm.html',
+                    'English': 'englishForm.html',
+                    'Science': 'scienceForm.html',
+                    'History': 'historyForm.html',
+                    'Creative Arts': 'creativeArtsForm.html',
+                    'RME': 'rmeForm.html',
+                    'Asante Twi': 'asanteTwiForm.html',
+                    'Computing': 'computingForm.html'
+                },
+                'BasicSix': {
+                    'Mathematics': 'mathForm.html',
+                    'English': 'englishForm.html',
+                    'Science': 'scienceForm.html',
+                    'History': 'historyForm.html',
+                    'Creative Arts': 'creativeArtsForm.html',
+                    'RME': 'rmeForm.html',
+                    'Asante Twi': 'asanteTwiForm.html',
+                    'Computing': 'computingForm.html'
+                }
+            };
+
+            if (subjectLinks[className] && subjectLinks[className][subjectName]) {
+                window.location.href = subjectLinks[className][subjectName];
+            } else {
+                alert('Link not available for ' + subjectName);
+            }
+        }
+
+        document.getElementById('logo').animate([ 
+            { transform: 'scale(1)' },
+            { transform: 'scale(1.1)' },
+            { transform: 'scale(1)' }
+        ], { 
+            duration: 2000, 
+            iterations: Infinity 
+        });
+    </script>
+</body>
+</html>

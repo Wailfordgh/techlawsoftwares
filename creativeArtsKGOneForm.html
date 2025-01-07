@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #f0f2f5;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #4a5568;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+        }
+
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(76, 175, 80, 0.2);
+        }
+
+        button:hover {
+            background: #45a049;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(76, 175, 80, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(76, 175, 80, 0.2);
+        }
+
+        .existing-score {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Subject: Creative Arts and Design</h2>
+        <form id="scoreForm">
+            <div class="form-group">
+                <label>Student Name</label>
+                <select id="studentName">
+                    <option value="">Select Student</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Test 1 (15)</label>
+                <input type="number" id="test1" max="15" min="0">
+                <div id="test1-existing" class="existing-score"></div>
+            </div>
+            <div class="form-group">
+                <label>Group Work (15)</label>
+                <input type="number" id="groupWork" max="15" min="0">
+                <div id="groupWork-existing" class="existing-score"></div>
+            </div>
+            <div class="form-group">
+                <label>Test 2 (15)</label>
+                <input type="number" id="test2" max="15" min="0">
+                <div id="test2-existing" class="existing-score"></div>
+            </div>
+            <div class="form-group">
+                <label>Project Work (15)</label>
+                <input type="number" id="projectWork" max="15" min="0">
+                <div id="projectWork-existing" class="existing-score"></div>
+            </div>
+            <div class="form-group">
+                <label>Exam</label>
+                <input type="number" id="exam" min="0">
+                <div id="exam-existing" class="existing-score"></div>
+            </div>
+            <button type="submit">Submit Scores</button>
+        </form>
+    </div>
+
+    <script>
+        google.script.run.withSuccessHandler(function(names) {
+            const select = document.getElementById('studentName');
+            names.forEach(name => {
+                const option = document.createElement('option');
+                option.value = option.text = name;
+                select.add(option);
+            });
+        }).getStudentNames();
+
+        document.getElementById('studentName').addEventListener('change', function() {
+            const studentName = this.value;
+            if (studentName) {
+                google.script.run.withSuccessHandler(function(scores) {
+                    if (scores) {
+                        document.getElementById('test1-existing').textContent = scores.test1 ? `Existing score: ${scores.test1}` : '';
+                        document.getElementById('groupWork-existing').textContent = scores.groupWork ? `Existing score: ${scores.groupWork}` : '';
+                        document.getElementById('test2-existing').textContent = scores.test2 ? `Existing score: ${scores.test2}` : '';
+                        document.getElementById('projectWork-existing').textContent = scores.projectWork ? `Existing score: ${scores.projectWork}` : '';
+                        document.getElementById('exam-existing').textContent = scores.exam ? `Existing score: ${scores.exam}` : '';
+                    }
+                }).getExistingScores(studentName);
+            }
+        });
+
+        document.getElementById('scoreForm').onsubmit = function(e) {
+            e.preventDefault();
+            const formData = {
+                studentName: document.getElementById('studentName').value,
+                test1: document.getElementById('test1').value,
+                groupWork: document.getElementById('groupWork').value,
+                test2: document.getElementById('test2').value,
+                projectWork: document.getElementById('projectWork').value,
+                exam: document.getElementById('exam').value
+            };
+
+            if (!formData.studentName) {
+                alert('Please select a student');
+                return;
+            }
+
+            google.script.run
+                .withSuccessHandler(function(result) {
+                    alert(result);
+                    if(result === 'Success') {
+                        document.getElementById('scoreForm').reset();
+                        // Clear existing score displays
+                        document.querySelectorAll('.existing-score').forEach(el => el.textContent = '');
+                    }
+                })
+                .withFailureHandler(function(error) {
+                    alert('Error: ' + error);
+                })
+                .submitScores(formData);
+        };
+    </script>
+</body>
+</html>
