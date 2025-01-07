@@ -76,7 +76,6 @@
 
             let subjectView = '<h2>' + className.replace(/([A-Z])/g, ' $1').trim() + '</h2><div class="subject-card">';
             subjects[className].forEach(subject => {
-                // Passing each subject to openSubject for dynamic routing
                 subjectView += '<div class="card" onclick="openSubject(\'' + className + '\', \'' + subject + '\')">' + subject + '</div>';
             });
             subjectView += '</div>';
@@ -87,71 +86,71 @@
         function openSubject(className, subjectName) {
             const subjectLinks = {
                 'KGOne': {
-                    'Literacy': 'literacyKGOneForm.html',
-                    'Numeracy': 'numeracyKGOneForm.html',
-                    'Creative Arts': 'creativeArtsKGOneForm.html'
+                    'Literacy': 'https://script.google.com/a/macros/st.vvu.edu.gh/s/AKfycbyvBJidxsm137rmG68t3PVih_5OHsFyb7v1EDEiislivfPSmMIdrHY23RgaogCc5tSAog/exec',
+                    'Numeracy': 'YOUR_LINK_FOR_KGOne_Numeracy',
+                    'Creative Arts': 'YOUR_LINK_FOR_KGOne_CreativeArts'
                 },
                 'KGTwo': {
-                    'Literacy': 'literacyKGTwoForm.html',
-                    'Numeracy': 'numeracyKGTwoForm.html',
-                    'Creative Arts': 'creativeArtsKGTwoForm.html'
+                    'Literacy': 'YOUR_LINK_FOR_KGTwo_Literacy',
+                    'Numeracy': 'YOUR_LINK_FOR_KGTwo_Numeracy',
+                    'Creative Arts': 'YOUR_LINK_FOR_KGTwo_CreativeArts'
                 },
                 'BasicOne': {
-                    'Mathematics': 'mathForm.html',
-                    'English': 'englishForm.html',
-                    'Science': 'scienceForm.html',
-                    'History': 'historyForm.html',
-                    'Creative Arts': 'creativeArtsForm.html',
-                    'RME': 'rmeForm.html',
-                    'Asante Twi': 'asanteTwiForm.html'
+                    'Mathematics': 'YOUR_LINK_FOR_BasicOne_Mathematics',
+                    'English': 'YOUR_LINK_FOR_BasicOne_English',
+                    'Science': 'YOUR_LINK_FOR_BasicOne_Science',
+                    'History': 'YOUR_LINK_FOR_BasicOne_History',
+                    'Creative Arts': 'YOUR_LINK_FOR_BasicOne_CreativeArts',
+                    'RME': 'YOUR_LINK_FOR_BasicOne_RME',
+                    'Asante Twi': 'YOUR_LINK_FOR_BasicOne_AsanteTwi'
                 },
                 'BasicTwo': {
-                    'Mathematics': 'mathForm.html',
-                    'English': 'englishForm.html',
-                    'Science': 'scienceForm.html',
-                    'History': 'historyForm.html',
-                    'Creative Arts': 'creativeArtsForm.html',
-                    'RME': 'rmeForm.html',
-                    'Asante Twi': 'asanteTwiForm.html'
+                    'Mathematics': 'YOUR_LINK_FOR_BasicTwo_Mathematics',
+                    'English': 'YOUR_LINK_FOR_BasicTwo_English',
+                    'Science': 'YOUR_LINK_FOR_BasicTwo_Science',
+                    'History': 'YOUR_LINK_FOR_BasicTwo_History',
+                    'Creative Arts': 'YOUR_LINK_FOR_BasicTwo_CreativeArts',
+                    'RME': 'YOUR_LINK_FOR_BasicTwo_RME',
+                    'Asante Twi': 'YOUR_LINK_FOR_BasicTwo_AsanteTwi'
                 },
                 'BasicThree': {
-                    'Mathematics': 'mathForm.html',
-                    'English': 'englishForm.html',
-                    'Science': 'scienceForm.html',
-                    'History': 'historyForm.html',
-                    'Creative Arts': 'creativeArtsForm.html',
-                    'RME': 'rmeForm.html',
-                    'Asante Twi': 'asanteTwiForm.html'
+                    'Mathematics': 'YOUR_LINK_FOR_BasicThree_Mathematics',
+                    'English': 'YOUR_LINK_FOR_BasicThree_English',
+                    'Science': 'YOUR_LINK_FOR_BasicThree_Science',
+                    'History': 'YOUR_LINK_FOR_BasicThree_History',
+                    'Creative Arts': 'YOUR_LINK_FOR_BasicThree_CreativeArts',
+                    'RME': 'YOUR_LINK_FOR_BasicThree_RME',
+                    'Asante Twi': 'YOUR_LINK_FOR_BasicThree_AsanteTwi'
                 },
                 'BasicFour': {
-                    'Mathematics': 'mathForm.html',
-                    'English': 'englishForm.html',
-                    'Science': 'scienceForm.html',
-                    'History': 'historyForm.html',
-                    'Creative Arts': 'creativeArtsForm.html',
-                    'RME': 'rmeForm.html',
-                    'Asante Twi': 'asanteTwiForm.html',
-                    'Computing': 'computingForm.html'
+                    'Mathematics': 'YOUR_LINK_FOR_BasicFour_Mathematics',
+                    'English': 'YOUR_LINK_FOR_BasicFour_English',
+                    'Science': 'YOUR_LINK_FOR_BasicFour_Science',
+                    'History': 'YOUR_LINK_FOR_BasicFour_History',
+                    'Creative Arts': 'YOUR_LINK_FOR_BasicFour_CreativeArts',
+                    'RME': 'YOUR_LINK_FOR_BasicFour_RME',
+                    'Asante Twi': 'YOUR_LINK_FOR_BasicFour_AsanteTwi',
+                    'Computing': 'YOUR_LINK_FOR_BasicFour_Computing'
                 },
                 'BasicFive': {
-                    'Mathematics': 'mathForm.html',
-                    'English': 'englishForm.html',
-                    'Science': 'scienceForm.html',
-                    'History': 'historyForm.html',
-                    'Creative Arts': 'creativeArtsForm.html',
-                    'RME': 'rmeForm.html',
-                    'Asante Twi': 'asanteTwiForm.html',
-                    'Computing': 'computingForm.html'
+                    'Mathematics': 'YOUR_LINK_FOR_BasicFive_Mathematics',
+                    'English': 'YOUR_LINK_FOR_BasicFive_English',
+                    'Science': 'YOUR_LINK_FOR_BasicFive_Science',
+                    'History': 'YOUR_LINK_FOR_BasicFive_History',
+                    'Creative Arts': 'YOUR_LINK_FOR_BasicFive_CreativeArts',
+                    'RME': 'YOUR_LINK_FOR_BasicFive_RME',
+                    'Asante Twi': 'YOUR_LINK_FOR_BasicFive_AsanteTwi',
+                    'Computing': 'YOUR_LINK_FOR_BasicFive_Computing'
                 },
                 'BasicSix': {
-                    'Mathematics': 'mathForm.html',
-                    'English': 'englishForm.html',
-                    'Science': 'scienceForm.html',
-                    'History': 'historyForm.html',
-                    'Creative Arts': 'creativeArtsForm.html',
-                    'RME': 'rmeForm.html',
-                    'Asante Twi': 'asanteTwiForm.html',
-                    'Computing': 'computingForm.html'
+                    'Mathematics': 'YOUR_LINK_FOR_BasicSix_Mathematics',
+                    'English': 'YOUR_LINK_FOR_BasicSix_English',
+                    'Science': 'YOUR_LINK_FOR_BasicSix_Science',
+                    'History': 'YOUR_LINK_FOR_BasicSix_History',
+                    'Creative Arts': 'YOUR_LINK_FOR_BasicSix_CreativeArts',
+                    'RME': 'YOUR_LINK_FOR_BasicSix_RME',
+                    'Asante Twi': 'YOUR_LINK_FOR_BasicSix_AsanteTwi',
+                    'Computing': 'YOUR_LINK_FOR_BasicSix_Computing'
                 }
             };
 
